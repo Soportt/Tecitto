@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agencia B&N - Representación de Actrices Creadoras</title>
+    <meta name="description" content="B&N: Representamos actrices y creadoras de contenido en Latam. Integramos Tecito.app para monetizar tips, membresías y ventas de fans. Únete a la comunidad más grande de creadores.">
+    <meta name="keywords" content="agencia actrices, creadoras de contenido, Tecito, monetización fans, Latam, representación artística">
+    <meta name="author" content="Agencia B&N">
+    <link rel="icon" type="image/png" href="tecitologo.png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        .carousel-item { display: none; }
+        .carousel-item.active { display: block; }
+        .gallery-item img { transition: transform 0.3s ease, opacity 0.3s ease; }
+        .gallery-item img:hover { transform: scale(1.05); opacity: 0.9; }
+        .fade-in { animation: fadeIn 1s ease-in; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .modal { display: none; position: fixed; z-index: 1000; inset-inline-start: 0; inset-block-start: 0; inline-size: 100%; block-size: 100%; background-color: rgba(0,0,0,0.5); }
+        .modal-content { background-color: white; margin: 15% auto; padding: 20px; border-radius: 10px; inline-size: 80%; max-inline-size: 500px; }
+        .hero-bg { background-image: url('hero.jpg'); background-size: cover; background-position: center; }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <!-- Navegación -->
+    <nav class="bg-teal-800 text-white fixed w-full top-0 z-50 shadow-lg">
+        <div class="container mx-auto px-4 py-4 flex justify-between items-center">
+            <h1 class="text-2xl font-bold">B&N</h1>
+            <ul class="flex space-x-6">
+                <li><a href="#home" class="hover:text-teal-300 transition">Inicio</a></li>
+                <li><a href="#services" class="hover:text-teal-300 transition">Servicios</a></li>
+                <li><a href="#tecito" class="hover:text-teal-300 transition">Tecito</a></li>
+                <li><a href="#actresses" class="hover:text-teal-300 transition">Actrices</a></li>
+                <li><a href="#contact" class="hover:text-teal-300 transition">Contacto</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero-bg text-white py-32 mt-16 relative">
+        <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+        <div class="container mx-auto px-4 text-center relative z-10">
+            <h1 class="text-6xl font-bold mb-4 fade-in">Agencia B&N</h1>
+            <p class="text-2xl mb-6 fade-in">La agencia líder en representación de actrices y creadoras en Latam. Monetiza con Tecito.app: tips, membresías y ventas de fans.</p>
+            <div class="space-x-4">
+                <a href="#contact" class="bg-teal-500 text-white px-8 py-3 rounded-full hover:bg-teal-600 transition">Únete como Actriz</a>
+                <a href="https://tecito.app/" target="_blank" class="border border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-teal-800 transition">Explora Tecito</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sección de Servicios -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-semibold text-center mb-12 fade-in">Nuestros Servicios Profesionales</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-8 bg-gray-100 rounded-xl shadow-lg text-center fade-in">
+                    <div class="text-4xl mb-4">🎭</div>
+                    <h3 class="text-2xl font-bold mb-4">Representación Artística</h3>
+                    <p class="text-gray-600">Gestionamos contratos en cine, TV y contenido digital para maximizar tu carrera.</p>
+                </div>
+                <div class="p-8 bg-gray-100 rounded-xl shadow-lg text-center fade-in">
+                    <div class="text-4xl mb-4">💰</div>
+                    <h3 class="text-2xl font-bold mb-4">Monetización con Tecito</h3>
+                    <p class="text-gray-600">Integramos Tecito.app para aceptar pagos internacionales, suscripciones y ventas de fans de forma segura.</p>
+                </div>
+                <div class="p-8 bg-gray-100 rounded-xl shadow-lg text-center fade-in">
+                    <div class="text-4xl mb-4">📈</div>
+                    <h3 class="text-2xl font-bold mb-4">Promoción y Asesoría</h3>
+                    <p class="text-gray-600">Conectamos con productores y fans, ofreciendo coaching para crecer en la comunidad de +1M creadores.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Sección Tecito -->
+    <section id="tecito" class="py-20 bg-teal-50">
+        <div class="container mx-auto px-4 text-center">
+            <h2 class="text-4xl font-semibold mb-8 fade-in">Integra Tecito: La Comunidad de Creadores Más Grande de Latam</h2>
+            <p class="text-xl text-gray-700 mb-8 fade-in">Tecito.app es la forma más fácil de aceptar tips, membresías y ventas de fans. Es gratis, toma menos de un minuto y ya une a +1M creadores. ¡Empodera a nuestras actrices para monetizar su pasión!</p>
+            <div class="bg-white p-8 rounded-xl shadow-lg max-w-4xl mx-auto fade-in">
+                <h3 class="text-2xl font-bold mb-4">Beneficios para Actrices:</h3>
+                <ul class="text-left text-gray-600 space-y-2">
+                    <li>✅ Acepta pagos internacionales sin complicaciones</li>
+                    <li>✅ Crea membresías exclusivas para fans leales</li>
+                    <li>✅ Vende contenido digital directamente</li>
+                    <li>✅ Únete a la comunidad más grande de Latam</li>
+                </ul>
+                <a href="https://tecito.app/" target="_blank" class="block mt-6 bg-teal-600 text-white px-6 py-3 rounded-full hover:bg-teal-700 transition mx-auto inline-block">Regístrate en Tecito Ahora</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-semibold text-center mb-12 fade-in">Lo que Dicen Nuestras Actrices</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="p-6 bg-gray-100 rounded-lg shadow-lg fade-in">
+                    <p class="text-gray-600 italic mb-4">"Gracias a Agencia B&N y Tecito.app, he duplicado mis ingresos con tips de fans."</p>
+                    <p class="font-bold">- Ana López</p>
+                </div>
+                <div class="p-6 bg-gray-100 rounded-lg shadow-lg fade-in">
+                    <p class="text-gray-600 italic mb-4">"La integración con Tecito hace que monetizar sea sencillo y profesional."</p>
+                    <p class="font-bold">- Sofía Martínez</p>
+                </div>
+                <div class="p-6 bg-gray-100 rounded-lg shadow-lg fade-in">
+                    <p class="text-gray-600 italic mb-4">"Como creadora, Tecito me ha ayudado a crecer mi comunidad en Latam."</p>
+                    <p class="font-bold">- Lucía Gómez</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galería de Actrices (Carrusel) -->
+    <section id="actresses" class="py-20 bg-teal-50">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-semibold text-center mb-12 fade-in">Nuestras Actrices Estrella</h2>
+            <div class="relative">
+                <div id="carousel" class="overflow-hidden">
+                    <div class="carousel-item active">
+                        <div class="gallery-item bg-white rounded-xl overflow-hidden shadow-xl mx-auto max-w-md">
+                            <img src="actriz1.png" alt="Ana López" class="w-full h-96 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold mb-2">Ana López</h3>
+                                <p class="text-gray-600 mb-4">Estrella de cine y creadora de contenido. Usa Tecito para membresías exclusivas.</p>
+                                <button onclick="openModal(0)" class="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">Ver Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="gallery-item bg-white rounded-xl overflow-hidden shadow-xl mx-auto max-w-md">
+                            <img src="actriz2.jpg" alt="Sofía Martínez" class="w-full h-96 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold mb-2">Sofía Martínez</h3>
+                                <p class="text-gray-600 mb-4">Comediante y actriz de series. Monetiza tips en vivo con Tecito.</p>
+                                <button onclick="openModal(1)" class="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">Ver Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="gallery-item bg-white rounded-xl overflow-hidden shadow-xl mx-auto max-w-md">
+                            <img src="actriz3.jpg" alt="Lucía Gómez" class="w-full h-96 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold mb-2">Lucía Gómez</h3>
+                                <p class="text-gray-600 mb-4">Talento emergente en cine independiente. Vende contenido digital vía Tecito.</p>
+                                <button onclick="openModal(2)" class="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">Ver Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="gallery-item bg-white rounded-xl overflow-hidden shadow-xl mx-auto max-w-md">
+                            <img src="giane.jpg" alt="Gianni Rossi" class="w-full h-96 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold mb-2">Gianni Rossi</h3>
+                                <p class="text-gray-600 mb-4">Talento emergente en cine independiente. Vende contenido digital vía Tecito.</p>
+                                <button onclick="openModal(3)" class="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">Ver Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="carousel-item">
+                        <div class="gallery-item bg-white rounded-xl overflow-hidden shadow-xl mx-auto max-w-md">
+                            <img src="actriz4.jpg" alt="María Rodríguez" class="w-full h-96 object-cover">
+                            <div class="p-6">
+                                <h3 class="text-2xl font-bold mb-2">María Rodríguez</h3>
+                                <p class="text-gray-600 mb-4">Actriz de teatro y creadora. Ha crecido su fanbase con suscripciones en Tecito.</p>
+                                <button onclick="openModal(4)" class="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">Ver Detalles</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button id="prev-btn" class="absolute top-1/2 left-4 transform -translate-y-1/2 bg-teal-600 text-white p-3 rounded-full hover:bg-teal-700 z-10">◄</button>
+                <button id="next-btn" class="absolute top-1/2 right-4 transform -translate-y-1/2 bg-teal-600 text-white p-3 rounded-full hover:bg-teal-700 z-10">►</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Modal para Detalles -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <span class="close float-right text-2xl cursor-pointer">&times;</span>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
+    <!-- Formulario de Contacto -->
+    <section id="contact" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <h2 class="text-4xl font-semibold text-center mb-12 fade-in">Contáctanos y Únete a la Agencia</h2>
+            <div class="max-w-lg mx-auto bg-gray-50 p-8 rounded-xl shadow-lg">
+                <div id="contact-form">
+                    <div class="mb-6">
+                        <label for="name" class="block text-gray-700 font-semibold mb-2">Nombre Completo</label>
+                        <input type="text" id="name" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Tu nombre" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="email" class="block text-gray-700 font-semibold mb-2">Correo Electrónico</label>
+                        <input type="email" id="email" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="tu@email.com" required>
+                    </div>
+                    <div class="mb-6">
+                        <label for="message" class="block text-gray-700 font-semibold mb-2">Mensaje o Portafolio</label>
+                        <textarea id="message" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" rows="5" placeholder="Cuéntanos sobre ti y cómo Tecito puede ayudarte" required></textarea>
+                    </div>
+                    <button id="submit-btn" class="w-full bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition font-semibold">Enviar Solicitud</button>
+                </div>
+                <p id="form-message" class="mt-4 text-center text-gray-700"></p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie de Página -->
+    <footer class="bg-teal-800 text-white py-8">
+        <div class="container mx-auto px-4 text-center">
+            <p class="text-lg mb-4">&copy; 2025 Agencia B&N. Todos los derechos reservados. | Powered by <a href="https://tecito.app/" target="_blank" class="underline">Tecito.app</a></p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="hover:text-teal-300">Facebook</a>
+                <a href="#" class="hover:text-teal-300">Instagram</a>
+                <a href="#" class="hover:text-teal-300">Twitter</a>
+                <a href="https://tecito.app/" target="_blank" class="hover:text-teal-300">Tecito</a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Inicializar EmailJS con la clave pública
+        (function(){
+            emailjs.init("F73T7pNW1NpYC0lwDNWFE");
+        })();
+
+        // Datos para el modal
+        const actressesData = [
+            { name: 'Ana López', bio: 'Experta en drama, con +50k fans en Tecito. Ha generado ingresos estables con membresías exclusivas.', link: 'https://tecito.app' },
+            { name: 'Sofía Martínez', bio: 'Especialista en comedia, usa tips en vivo para interactuar con fans durante streams.', link: 'https://tecito.app' },
+            { name: 'Lucía Gómez', bio: 'Cine independiente, vende tutoriales y behind-the-scenes a través de ventas directas en Tecito.', link: 'https://tecito.app' },
+            { name: 'Gianni Rossi', bio: 'Talento emergente en cine independiente. Vende contenido digital vía Tecito.', link: 'https://tecito.app' },
+            { name: 'María Rodríguez', bio: 'Teatro y contenido viral, ha crecido su audiencia con suscripciones temáticas en la plataforma.', link: 'https://tecito.app' }
+        ];
+
+        function openModal(index) {
+            const data = actressesData[index];
+            document.getElementById('modal-body').innerHTML = `
+                <h2 class="text-2xl font-bold mb-4">${data.name}</h2>
+                <p class="text-gray-600 mb-4">${data.bio}</p>
+                <a href="${data.link}" target="_blank" class="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">Visitar Perfil en Tecito</a>
+            `;
+            document.getElementById('modal').style.display = 'block';
+        }
+
+        // Cerrar modal
+        document.querySelector('.close').addEventListener('click', () => {
+            document.getElementById('modal').style.display = 'none';
+        });
+        window.onclick = (event) => {
+            const modal = document.getElementById('modal');
+            if (event.target == modal) modal.style.display = 'none';
+        };
+
+        // Carrusel con auto-avance
+        const carousel = document.getElementById('carousel');
+        const items = carousel.querySelectorAll('.carousel-item');
+        let currentItem = 0;
+        const autoAdvance = setInterval(() => {
+            currentItem = (currentItem + 1) % items.length;
+            showItem(currentItem);
+        }, 5000);
+
+        function showItem(index) {
+            items.forEach((item, i) => {
+                item.classList.toggle('active', i === index);
+            });
+        }
+
+        document.getElementById('next-btn').addEventListener('click', () => {
+            clearInterval(autoAdvance);
+            currentItem = (currentItem + 1) % items.length;
+            showItem(currentItem);
+        });
+
+        document.getElementById('prev-btn').addEventListener('click', () => {
+            clearInterval(autoAdvance);
+            currentItem = (currentItem - 1 + items.length) % items.length;
+            showItem(currentItem);
+        });
+
+        // Smooth scroll para navegación
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Formulario con EmailJS
+        document.getElementById('submit-btn').addEventListener('click', () => {
+            const name = document.getElementById('name').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const message = document.getElementById('message').value.trim();
+            const formMessage = document.getElementById('form-message');
+
+            if (!name || !email || !message) {
+                formMessage.textContent = 'Por favor, completa todos los campos requeridos.';
+                formMessage.classList.remove('text-green-600');
+                formMessage.classList.add('text-red-600');
+                return;
+            }
+
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                formMessage.textContent = 'Por favor, ingresa un correo electrónico válido.';
+                formMessage.classList.remove('text-green-600');
+                formMessage.classList.add('text-red-600');
+                return;
+            }
+
+            // Enviar correo con EmailJS
+            emailjs.send('service_pozz2uo', 'service_pozz2uo', {
+                from_name: name,
+                from_email: email,
+                message: message
+            })
+            .then(() => {
+                formMessage.textContent = '¡Solicitud enviada con éxito! Te contactaremos pronto vía email.';
+                formMessage.classList.remove('text-red-600');
+                formMessage.classList.add('text-green-600');
+                document.getElementById('contact-form').reset();
+            }, (error) => {
+                formMessage.textContent = 'Error al enviar el mensaje. Intenta de nuevo más tarde.';
+                formMessage.classList.remove('text-green-600');
+                formMessage.classList.add('text-red-600');
+                console.error('EmailJS error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
