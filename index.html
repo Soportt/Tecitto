@@ -7,7 +7,6 @@
     <meta name="description" content="B&N: Representamos actrices y creadoras de contenido en Latam. Integramos Tecito.app para monetizar tips, membresías y ventas de fans. Únete a la comunidad más grande de creadores.">
     <meta name="keywords" content="agencia actrices, creadoras de contenido, Tecito, monetización fans, Latam, representación artística">
     <meta name="author" content="Agencia B&N">
-    <link rel="icon" type="image/png" href="tecitologo.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
     <style>
@@ -42,7 +41,7 @@
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
         <div class="container mx-auto px-4 text-center relative z-10">
             <h1 class="text-6xl font-bold mb-4 fade-in">Agencia B&N</h1>
-            <p class="text-2xl mb-6 fade-in">Agencia en representación de actrices y creadoras en Latam. Monetiza con Tecito.app: tips, membresías y ventas de fans.</p>
+            <p class="text-2xl mb-6 fade-in">La agencia líder en representación de actrices y creadoras en Latam. Monetiza con Tecito.app: tips, membresías y ventas de fans.</p>
             <div class="space-x-4">
                 <a href="#contact" class="bg-teal-500 text-white px-8 py-3 rounded-full hover:bg-teal-600 transition">Únete como Actriz</a>
                 <a href="https://tecito.app/" target="_blank" class="border border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-teal-800 transition">Explora Tecito</a>
@@ -225,7 +224,7 @@
     <script>
         // Inicializar EmailJS con la clave pública
         (function(){
-            emailjs.init("CfZtldtVhlQEFso6I");
+            emailjs.init("CfZtldtVhlQEFso6I"); // Clave pública actualizada
         })();
 
         // Datos para el modal
@@ -315,7 +314,7 @@
             }
 
             // Enviar correo con EmailJS
-            emailjs.send('service_pozz2uo', 'service_pozz2uo', {
+            emailjs.send('service_pozz2uo', 'template_kkmt6tw', {
                 from_name: name,
                 from_email: email,
                 message: message
@@ -326,7 +325,7 @@
                 formMessage.classList.add('text-green-600');
                 document.getElementById('contact-form').reset();
             }, (error) => {
-                formMessage.textContent = 'Error al enviar el mensaje. Intenta de nuevo más tarde.';
+                formMessage.textContent = 'Error al enviar el mensaje. Verifica la configuración en EmailJS.';
                 formMessage.classList.remove('text-green-600');
                 formMessage.classList.add('text-red-600');
                 console.error('EmailJS error:', error);
@@ -334,6 +333,4 @@
         });
     </script>
 </body>
-
 </html>
-
