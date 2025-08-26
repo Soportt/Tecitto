@@ -16,137 +16,149 @@
         .gallery-item img:hover { transform: scale(1.05); opacity: 0.9; }
         .fade-in { animation: fadeIn 1s ease-in; }
         @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .modal { display: none; position: fixed; z-index: 1000; inset-inline-start: 0; inset-block-start: 0; inline-size: 100%; block-size: 100%; background-color: rgba(0,0,0,0.5); }
-        .modal-content { background-color: white; margin: 15% auto; padding: 20px; border-radius: 10px; inline-size: 80%; max-inline-size: 500px; }
+        .modal { display: none; position: fixed; z-index: 1000; inset: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.5); }
+        .modal-content { background-color: white; margin: 10% auto; padding: 1.5rem; border-radius: 0.75rem; width: 90%; max-width: 500px; }
         .hero-bg { background-image: url('hero.jpg'); background-size: cover; background-position: center; }
+        /* Responsive adjustments */
+        @media (max-width: 640px) {
+            .hero-bg { background-position: top; }
+            .modal-content { margin: 20% auto; padding: 1rem; }
+            .container { padding-left: 1rem; padding-right: 1rem; }
+        }
+        @media (max-width: 768px) {
+            nav ul { flex-direction: column; gap: 1rem; display: none; }
+            nav ul.active { display: flex; }
+            .menu-toggle { display: block; }
+        }
+        @media (min-width: 769px) {
+            .menu-toggle { display: none; }
+        }
     </style>
 </head>
 <body class="bg-gray-50 font-sans">
     <!-- Navegación -->
     <nav class="bg-teal-800 text-white fixed w-full top-0 z-50 shadow-lg">
         <div class="container mx-auto px-4 py-4 flex justify-between items-center">
-            <h1 class="text-2xl font-bold">B&N</h1>
-            <ul class="flex space-x-6">
-                <li><a href="#home" class="hover:text-teal-300 transition">Inicio</a></li>
-                <li><a href="#services" class="hover:text-teal-300 transition">Servicios</a></li>
-                <li><a href="#tecito" class="hover:text-teal-300 transition">Tecito</a></li>
-                <li><a href="#actresses" class="hover:text-teal-300 transition">Actrices</a></li>
-                <li><a href="#contact" class="hover:text-teal-300 transition">Contacto</a></li>
+            <h1 class="text-2xl font-bold sm:text-3xl">B&N</h1>
+            <button class="menu-toggle text-white text-2xl md:hidden" aria-label="Toggle menu">&#9776;</button>
+            <ul class="flex space-x-6 md:flex md:space-x-6 hidden md:block">
+                <li><a href="#home" class="hover:text-teal-300 transition text-base sm:text-lg">Inicio</a></li>
+                <li><a href="#services" class="hover:text-teal-300 transition text-base sm:text-lg">Servicios</a></li>
+                <li><a href="#tecito" class="hover:text-teal-300 transition text-base sm:text-lg">Tecito</a></li>
+                <li><a href="#actresses" class="hover:text-teal-300 transition text-base sm:text-lg">Actrices</a></li>
+                <li><a href="#contact" class="hover:text-teal-300 transition text-base sm:text-lg">Contacto</a></li>
             </ul>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <header id="home" class="hero-bg text-white py-32 mt-16 relative">
+    <header id="home" class="hero-bg text-white py-16 sm:py-24 md:py-32 mt-16 relative">
         <div class="absolute inset-0 bg-black bg-opacity-50"></div>
         <div class="container mx-auto px-4 text-center relative z-10">
-            <h1 class="text-6xl font-bold mb-4 fade-in">Agencia B&N</h1>
-            <p class="text-2xl mb-6 fade-in">La agencia líder en representación de actrices y creadoras en Latam. Monetiza con Tecito.app: tips, membresías y ventas de fans.</p>
-            <div class="space-x-4">
-                <a href="#contact" class="bg-teal-500 text-white px-8 py-3 rounded-full hover:bg-teal-600 transition">Únete como Actriz</a>
-                <a href="https://tecito.app/" target="_blank" class="border border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-teal-800 transition">Explora Tecito</a>
+            <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 fade-in">Agencia B&N</h1>
+            <p class="text-lg sm:text-xl md:text-2xl mb-6 fade-in">La agencia líder en representación de actrices y creadoras en Latam. Monetiza con Tecito.app: tips, membresías y ventas de fans.</p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                <a href="#contact" class="bg-teal-500 text-white px-6 py-3 rounded-full hover:bg-teal-600 transition text-base sm:text-lg">Únete como Actriz</a>
+                <a href="https://tecito.app/" target="_blank" class="border border-white text-white px-6 py-3 rounded-full hover:bg-white hover:text-teal-800 transition text-base sm:text-lg">Explora Tecito</a>
             </div>
-            <br>
             <div class="mt-4">
-                <a href="login.html" class="border border-white text-white px-8 py-3 rounded-full hover:bg-white hover:text-teal-800 transition">Instagram</a>
+                <a href="login.html" class="border border-white text-white px-6 py-3 rounded-full hover:bg-white hover:text-teal-800 transition text-base sm:text-lg">Instagram</a>
             </div>
         </div>
     </header>
 
     <!-- Sección de Servicios -->
-    <section id="services" class="py-20 bg-white">
+    <section id="services" class="py-12 sm:py-16 md:py-20 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-semibold text-center mb-12 fade-in">Nuestros Servicios Profesionales</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="p-8 bg-gray-100 rounded-xl shadow-lg text-center fade-in">
-                    <div class="text-4xl mb-4">🎭</div>
-                    <h3 class="text-2xl font-bold mb-4">Representación Artística</h3>
-                    <p class="text-gray-600">Gestionamos contratos en cine, TV y contenido digital para maximizar tu carrera.</p>
+            <h2 class="text-3xl sm:text-4xl font-semibold text-center mb-8 sm:mb-12 fade-in">Nuestros Servicios Profesionales</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+                <div class="p-6 sm:p-8 bg-gray-100 rounded-xl shadow-lg text-center fade-in">
+                    <div class="text-3xl sm:text-4xl mb-4">🎭</div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4">Representación Artística</h3>
+                    <p class="text-gray-600 text-sm sm:text-base">Gestionamos contratos en cine, TV y contenido digital para maximizar tu carrera.</p>
                 </div>
-                <div class="p-8 bg-gray-100 rounded-xl shadow-lg text-center fade-in">
-                    <div class="text-4xl mb-4">💰</div>
-                    <h3 class="text-2xl font-bold mb-4">Monetización con Tecito</h3>
-                    <p class="text-gray-600">Integramos Tecito.app para aceptar pagos internacionales, suscripciones y ventas de fans de forma segura.</p>
+                <div class="p-6 sm:p-8 bg-gray-100 rounded-xl shadow-lg text-center fade-in">
+                    <div class="text-3xl sm:text-4xl mb-4">💰</div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4">Monetización con Tecito</h3>
+                    <p class="text-gray-600 text-sm sm:text-base">Integramos Tecito.app para aceptar pagos internacionales, suscripciones y ventas de fans de forma segura.</p>
                 </div>
-                <div class="p-8 bg-gray-100 rounded-xl shadow-lg text-center fade-in">
-                    <div class="text-4xl mb-4">📈</div>
-                    <h3 class="text-2xl font-bold mb-4">Promoción y Asesoría</h3>
-                    <p class="text-gray-600">Conectamos con productores y fans, ofreciendo coaching para crecer en la comunidad de +1M creadores.</p>
+                <div class="p-6 sm:p-8 bg-gray-100 rounded-xl shadow-lg text-center fade-in">
+                    <div class="text-3xl sm:text-4xl mb-4">📈</div>
+                    <h3 class="text-xl sm:text-2xl font-bold mb-4">Promoción y Asesoría</h3>
+                    <p class="text-gray-600 text-sm sm:text-base">Conectamos con productores y fans, ofreciendo coaching para crecer en la comunidad de +1M creadores.</p>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Sección Tecito -->
-    <section id="tecito" class="py-20 bg-teal-50">
+    <section id="tecito" class="py-12 sm:py-16 md:py-20 bg-teal-50">
         <div class="container mx-auto px-4 text-center">
-            <h2 class="text-4xl font-semibold mb-8 fade-in">Integra Tecito: La Comunidad de Creadores Más Grande de Latam</h2>
-            <p class="text-xl text-gray-700 mb-8 fade-in">Tecito.app es la forma más fácil de aceptar tips, membresías y ventas de fans. Es gratis, toma menos de un minuto y ya une a +1M creadores. ¡Empodera a nuestras actrices para monetizar su pasión!</p>
-            <div class="bg-white p-8 rounded-xl shadow-lg max-w-4xl mx-auto fade-in">
-                <h3 class="text-2xl font-bold mb-4">Beneficios para Actrices:</h3>
-                <ul class="text-left text-gray-600 space-y-2">
+            <h2 class="text-3xl sm:text-4xl font-semibold mb-6 sm:mb-8 fade-in">Integra Tecito: La Comunidad de Creadores Más Grande de Latam</h2>
+            <p class="text-base sm:text-lg md:text-xl text-gray-700 mb-6 sm:mb-8 fade-in">Tecito.app es la forma más fácil de aceptar tips, membresías y ventas de fans. Es gratis, toma menos de un minuto y ya une a +1M creadores. ¡Empodera a nuestras actrices para monetizar su pasión!</p>
+            <div class="bg-white p-6 sm:p-8 rounded-xl shadow-lg max-w-4xl mx-auto fade-in">
+                <h3 class="text-xl sm:text-2xl font-bold mb-4">Beneficios para Actrices:</h3>
+                <ul class="text-left text-gray-600 text-sm sm:text-base space-y-2">
                     <li>✅ Acepta pagos internacionales sin complicaciones</li>
                     <li>✅ Crea membresías exclusivas para fans leales</li>
                     <li>✅ Vende contenido digital directamente</li>
                     <li>✅ Únete a la comunidad más grande de Latam</li>
                 </ul>
-                <a href="https://tecito.app/" target="_blank" class="block mt-6 bg-teal-600 text-white px-6 py-3 rounded-full hover:bg-teal-700 transition mx-auto inline-block">Regístrate en Tecito Ahora</a>
+                <a href="https://tecito.app/" target="_blank" class="block mt-6 bg-teal-600 text-white px-6 py-3 rounded-full hover:bg-teal-700 transition mx-auto inline-block text-base sm:text-lg">Regístrate en Tecito Ahora</a>
             </div>
         </div>
     </section>
 
     <!-- Testimonios -->
-    <section class="py-20 bg-white">
+    <section class="py-12 sm:py-16 md:py-20 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-semibold text-center mb-12 fade-in">Lo que Dicen Nuestras Actrices</h2>
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <h2 class="text-3xl sm:text-4xl font-semibold text-center mb-8 sm:mb-12 fade-in">Lo que Dicen Nuestras Actrices</h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
                 <div class="p-6 bg-gray-100 rounded-lg shadow-lg fade-in">
-                    <p class="text-gray-600 italic mb-4">"Con B&N y Tecito.app, he podido conectar con mis fans de una forma súper directa. Los tips me han ayudado a financiar mis proyectos personales."</p>
-                    <p class="font-bold">- Ana López</p>
+                    <p class="text-gray-600 italic mb-4 text-sm sm:text-base">"Con B&N y Tecito.app, he podido conectar con mis fans de una forma súper directa. Los tips me han ayudado a financiar mis proyectos personales."</p>
+                    <p class="font-bold text-sm sm:text-base">- Ana López</p>
                 </div>
                 <div class="p-6 bg-gray-100 rounded-lg shadow-lg fade-in">
-                    <p class="text-gray-600 italic mb-4">"La asesoría de B&N me dio las herramientas para hacer crecer mi canal, y con Tecito es facilísimo recibir pagos de mis seguidores."</p>
-                    <p class="font-bold">- Sofía Martínez</p>
+                    <p class="text-gray-600 italic mb-4 text-sm sm:text-base">"La asesoría de B&N me dio las herramientas para hacer crecer mi canal, y con Tecito es facilísimo recibir pagos de mis seguidores."</p>
+                    <p class="font-bold text-sm sm:text-base">- Sofía Martínez</p>
                 </div>
                 <div class="p-6 bg-gray-100 rounded-lg shadow-lg fade-in">
-                    <p class="text-gray-600 italic mb-4">"Gracias a Tecito, mis suscriptores ahora tienen acceso a contenido exclusivo. B&N me ayudó a profesionalizar mi marca."</p>
-                    <p class="font-bold">- Lucía Gómez</p>
+                    <p class="text-gray-600 italic mb-4 text-sm sm:text-base">"Gracias a Tecito, mis suscriptores ahora tienen acceso a contenido exclusivo. B&N me ayudó a profesionalizar mi marca."</p>
+                    <p class="font-bold text-sm sm:text-base">- Lucía Gómez</p>
                 </div>
             </div>
         </div>
     </section>
 
-
-
     <!-- Modal para Detalles -->
     <div id="modal" class="modal">
         <div class="modal-content">
-            <span class="close float-right text-2xl cursor-pointer">&times;</span>
+            <span class="close float-right text-xl sm:text-2xl cursor-pointer">&times;</span>
             <div id="modal-body"></div>
         </div>
     </div>
 
     <!-- Formulario de Contacto -->
-    <section id="contact" class="py-20 bg-white">
+    <section id="contact" class="py-12 sm:py-16 md:py-20 bg-white">
         <div class="container mx-auto px-4">
-            <h2 class="text-4xl font-semibold text-center mb-12 fade-in">Contáctanos y Únete a la Agencia</h2>
-            <div class="max-w-lg mx-auto bg-gray-50 p-8 rounded-xl shadow-lg">
+            <h2 class="text-3xl sm:text-4xl font-semibold text-center mb-8 sm:mb-12 fade-in">Contáctanos y Únete a la Agencia</h2>
+            <div class="max-w-lg mx-auto bg-gray-50 p-6 sm:p-8 rounded-xl shadow-lg">
                 <div id="contact-form">
                     <div class="mb-6">
-                        <label for="name" class="block text-gray-700 font-semibold mb-2">Nombre Completo</label>
-                        <input type="text" id="name" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="Tu nombre" required>
+                        <label for="name" class="block text-gray-700 font-semibold mb-2 text-sm sm:text-base">Nombre Completo</label>
+                        <input type="text" id="name" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm sm:text-base" placeholder="Tu nombre" required>
                     </div>
                     <div class="mb-6">
-                        <label for="email" class="block text-gray-700 font-semibold mb-2">Correo Electrónico</label>
-                        <input type="email" id="email" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" placeholder="tu@email.com" required>
+                        <label for="email" class="block text-gray-700 font-semibold mb-2 text-sm sm:text-base">Correo Electrónico</label>
+                        <input type="email" id="email" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm sm:text-base" placeholder="tu@email.com" required>
                     </div>
                     <div class="mb-6">
-                        <label for="message" class="block text-gray-700 font-semibold mb-2">Mensaje o Portafolio</label>
-                        <textarea id="message" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500" rows="5" placeholder="Cuéntanos sobre ti y cómo Tecito puede ayudarte" required></textarea>
+                        <label for="message" class="block text-gray-700 font-semibold mb-2 text-sm sm:text-base">Mensaje o Portafolio</label>
+                        <textarea id="message" class="w-full p-3 border rounded-lg focus:outline-none focus:ring-2 focus:ring-teal-500 text-sm sm:text-base" rows="5" placeholder="Cuéntanos sobre ti y cómo Tecito puede ayudarte" required></textarea>
                     </div>
-                    <button id="submit-btn" class="w-full bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition font-semibold">Enviar Solicitud</button>
+                    <button id="submit-btn" class="w-full bg-teal-600 text-white px-6 py-3 rounded-lg hover:bg-teal-700 transition font-semibold text-base sm:text-lg">Enviar Solicitud</button>
                 </div>
-                <p id="form-message" class="mt-4 text-center text-gray-700"></p>
+                <p id="form-message" class="mt-4 text-center text-gray-700 text-sm sm:text-base"></p>
             </div>
         </div>
     </section>
@@ -154,12 +166,12 @@
     <!-- Pie de Página -->
     <footer class="bg-teal-800 text-white py-8">
         <div class="container mx-auto px-4 text-center">
-            <p class="text-lg mb-4">&copy; 2025 Agencia B&N. Todos los derechos reservados. | Powered by <a href="https://tecito.app/" target="_blank" class="underline">Tecito.app</a></p>
-            <div class="flex justify-center space-x-6">
-                <a href="#" class="hover:text-teal-300">Facebook</a>
-                <a href="login.html" class="hover:text-teal-300">Instagram</a>
-                <a href="#" class="hover:text-teal-300">Twitter</a>
-                <a href="https://tecito.app/" target="_blank" class="hover:text-teal-300">Tecito</a>
+            <p class="text-base sm:text-lg mb-4">&copy; 2025 Agencia B&N. Todos los derechos reservados. | Powered by <a href="https://tecito.app/" target="_blank" class="underline">Tecito.app</a></p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="#" class="hover:text-teal-300 text-sm sm:text-base">Facebook</a>
+                <a href="login.html" class="hover:text-teal-300 text-sm sm:text-base">Instagram</a>
+                <a href="#" class="hover:text-teal-300 text-sm sm:text-base">Twitter</a>
+                <a href="https://tecito.app/" target="_blank" class="hover:text-teal-300 text-sm sm:text-base">Tecito</a>
             </div>
         </div>
     </footer>
@@ -167,7 +179,7 @@
     <script>
         // Inicializar EmailJS con la clave pública
         (function(){
-            emailjs.init("CfZtldtVhlQEFso6I"); // Clave pública actualizada
+            emailjs.init("CfZtldtVhlQEFso6I");
         })();
 
         // Datos para el modal
@@ -182,9 +194,9 @@
         function openModal(index) {
             const data = actressesData[index];
             document.getElementById('modal-body').innerHTML = `
-                <h2 class="text-2xl font-bold mb-4">${data.name}</h2>
-                <p class="text-gray-600 mb-4">${data.bio}</p>
-                <a href="${data.link}" target="_blank" class="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700">Visitar Perfil en Tecito</a>
+                <h2 class="text-xl sm:text-2xl font-bold mb-4">${data.name}</h2>
+                <p class="text-gray-600 mb-4 text-sm sm:text-base">${data.bio}</p>
+                <a href="${data.link}" target="_blank" class="bg-teal-600 text-white px-4 py-2 rounded hover:bg-teal-700 text-sm sm:text-base">Visitar Perfil en Tecito</a>
             `;
             document.getElementById('modal').style.display = 'block';
         }
@@ -198,31 +210,10 @@
             if (event.target == modal) modal.style.display = 'none';
         };
 
-        // Carrusel con auto-avance
-        const carousel = document.getElementById('carousel');
-        const items = carousel.querySelectorAll('.carousel-item');
-        let currentItem = 0;
-        const autoAdvance = setInterval(() => {
-            currentItem = (currentItem + 1) % items.length;
-            showItem(currentItem);
-        }, 5000);
-
-        function showItem(index) {
-            items.forEach((item, i) => {
-                item.classList.toggle('active', i === index);
-            });
-        }
-
-        document.getElementById('next-btn').addEventListener('click', () => {
-            clearInterval(autoAdvance);
-            currentItem = (currentItem + 1) % items.length;
-            showItem(currentItem);
-        });
-
-        document.getElementById('prev-btn').addEventListener('click', () => {
-            clearInterval(autoAdvance);
-            currentItem = (currentItem - 1 + items.length) % items.length;
-            showItem(currentItem);
+        // Toggle menú en móviles
+        document.querySelector('.menu-toggle').addEventListener('click', () => {
+            const navMenu = document.querySelector('nav ul');
+            navMenu.classList.toggle('active');
         });
 
         // Smooth scroll para navegación
@@ -232,6 +223,11 @@
                 document.querySelector(this.getAttribute('href')).scrollIntoView({
                     behavior: 'smooth'
                 });
+                // Cerrar menú en móviles al hacer clic
+                const navMenu = document.querySelector('nav ul');
+                if (navMenu.classList.contains('active')) {
+                    navMenu.classList.remove('active');
+                }
             });
         });
 
@@ -277,4 +273,3 @@
     </script>
 </body>
 </html>
-
